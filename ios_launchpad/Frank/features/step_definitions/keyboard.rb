@@ -238,7 +238,7 @@ Then /^I type abcde$/ do
                   step "I wait for 0.5 seconds"
                   }
                   
-    frankly_map( "view:'ImageTestView'", "toggleKeyboard" )
+    frankly_map( "view:'FHServiceView'", "touchx:y:", "1010", "394" )
     step "I wait for 3 seconds"
 end
                   
