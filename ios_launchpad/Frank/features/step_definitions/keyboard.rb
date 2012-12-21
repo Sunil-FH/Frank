@@ -248,24 +248,24 @@ Then /^I type abcde$/ do
         step "I wait for 0.5 seconds"
     }
 
-                  %x{osascript<<APPLESCRIPT
-                  tell application "System Events"
-                  tell application "iPhone Simulator" to activate
-                  key code 42
-                  end tell
-                  APPLESCRIPT}
-                  step "I wait for 0.5 seconds"
-                  #left
-                  frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
-                  step "I wait for 0.5 seconds"
+    %x{osascript<<APPLESCRIPT
+        tell application "System Events"
+        tell application "iPhone Simulator" to activate
+        key code 42
+        end tell
+    APPLESCRIPT}
+    step "I wait for 0.5 seconds"
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    step "I wait for 0.5 seconds"
 
-                  %w{_ '= '+ *}.each{|char|
-                  step "I send the command \"#{char}\""
-                  step "I wait for 0.5 seconds"
-                  #left
-                  frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
-                  step "I wait for 0.5 seconds"
-                  }
+    %w{_ '= '+ *}.each{|char|
+        step "I send the command \"#{char}\""
+        step "I wait for 0.5 seconds"
+        #left
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+        step "I wait for 0.5 seconds"
+    }
                   
     frankly_map( "view:'FHServiceView'", "touchx:y:", "1010", "394" )
     step "I wait for 3 seconds"
@@ -278,11 +278,11 @@ def check_image(shotImage, checkImage, x, y, outFile, testName)
     if res == 0
         outFile.write(" <tr><td>")
         outFile.write("#{testName}")
-        outFile.write("</td><td style='color:green'>PASSED</td></tr>\n")
+        outFile.write("</td><td name='res' style='color:green'>PASSED</td></tr>\n")
     else
         outFile.write(" <tr><td>")
         outFile.write("#{testName}")
-        outFile.write("</td><td style='color:red'>FAILED</td></tr>\n")
+        outFile.write("</td><td name='res' style='color:red'>FAILED</td></tr>\n")
     end
 end
                   
@@ -291,7 +291,33 @@ Then /^I check color of the cell$/ do
 
     `./simulatorExtractor`
     File.open("/Users/Shared/report.html", "w") {|f|
-        f.write("<html><body><table border=\"2px\"><tbody>\n")
+        f.write("<html>")
+        f.write("<head>\n")
+        f.write("<script>\n")
+        f.write("    function calcResults()\n")
+        f.write("    {\n")
+        f.write("      var elements = document.getElementsByName('res');\n")
+        f.write("      var success = 0;\n")
+        f.write("      var fail = 0;\n")
+        f.write("      for (i = 0 ; i < elements.length; i++)\n")
+        f.write("      {\n")
+        f.write("        var el = elements[i];\n")
+        f.write("        if (el.innerText == 'PASSED')\n")
+        f.write("           success++;\n")
+        f.write("        else\n")
+        f.write("           fail++;\n")
+        f.write("      }\n")
+        f.write("      document.getElementById('total').innerText = \"Total tests: \" + (success + fail);\n")
+        f.write("      document.getElementById('success').innerText = \"Succeeded: \" + success;\n")
+        f.write("      document.getElementById('fail').innerText = \"Failed: \" + fail;\n")
+        f.write("    }\n")
+        f.write("</script>\n")
+        f.write("</head>\n")
+        f.write("<body onload=\"calcResults();\">\n");
+        f.write("<p id=\"total\"></p>\n")
+        f.write("<p id=\"success\"></p>\n")
+        f.write("<p id=\"fail\"></p>\n")
+        f.write("<table border=\"2px\"><tbody>\n")
         
         check_image("/Users/Shared/test.png", "/Users/Shared/1.png", 90, 263, f, "Test 01: 'a' input")
         check_image("/Users/Shared/test.png", "/Users/Shared/1.png", 161, 263, f, "Test 02: 'b' input" )
