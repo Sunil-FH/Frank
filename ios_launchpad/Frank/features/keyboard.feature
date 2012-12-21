@@ -1,8 +1,8 @@
 Feature: Session Stability Test Suite
 
   Scenario: Launching the resetted app
-    Given I reset the application and profiles
     Given I set studio url to http://studio-qa.framehawk.com
+    Given I reset the application and profiles
     Given I launch using username "iilyin@exadel.com", password "framehawk101", profile "Frank Automation"
 
   Scenario: Open the drawer
