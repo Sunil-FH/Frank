@@ -60,7 +60,7 @@ When /^I send return key$/ do
 end
 
 Then /^I log in to google drive$/ do
-    touch "view:'UIView' marked:'KeyboardButton'"
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "980", "750" )
     step "I wait for 3 seconds"
     frankly_map( "view:'FHServiceView'", "touchx:y:", "154", "35" )
     step "I wait for 3 seconds"
@@ -68,7 +68,6 @@ Then /^I log in to google drive$/ do
     step "I wait for 2 seconds"
     step "I send the command \"a\""
     step "I wait for 2 seconds"
-    step "I wait for 3 seconds"
     step "I send the command \"https://drive.google.com\""
     step "I send return key"
     step "I wait for 3 seconds"
@@ -86,7 +85,6 @@ When /^I open template url$/ do
     step "I wait for 2 seconds"
     step "I send the command \"a\""
     step "I wait for 2 seconds"
-    step "I wait for 3 seconds"
     step "I send the command \"https://drive.google.com/templates?q=FHTest1&sort=hottest&view=public\""
     step "I send return key"
     step "I wait for 2 seconds"
@@ -98,73 +96,89 @@ When /^I open template url$/ do
 end
 
 Then /^I type abcde$/ do
-    touch "view:'UIView' marked:'KeyboardButton'"
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "980", "750" )
 
     %w{a b c d e f g h i j k l}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
-    
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+ 
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
     step "I wait for 0.5 seconds"
 
     %w{x w v u t s r q p o n m}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendLeft" )
+        #left
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
         step "I wait for 0.5 seconds"
     }
     
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
     step "I wait for 0.5 seconds"
 
     %w{y z 1 2 3 4 5 6 7 8 9 0}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
     
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
 
     %w{L K J I H G F E D C B A}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendLeft" )
+        #left
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
         step "I wait for 0.5 seconds"
     }
     
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
     step "I wait for 0.5 seconds"
     
     %w{M N O P Q R S T U V W X}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
     
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
     
     %w{. @ & $ ) ( ; : / - Z Y}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendLeft" )
+        #left
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
         step "I wait for 0.5 seconds"
     }
     
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
     step "I wait for 0.5 seconds"
     
     %w{, ? ! .'}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
 
@@ -177,14 +191,16 @@ Then /^I type abcde$/ do
         end tell
         APPLESCRIPT}
     step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendRight" )
+    #right
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
     step "I wait for 0.5 seconds"
                   
                   
     %w{[ ] \{ \}}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
 
@@ -197,30 +213,38 @@ Then /^I type abcde$/ do
         end tell
         APPLESCRIPT}
     step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendRight" )
+    #right
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
     step "I wait for 0.5 seconds"
 
     %w{% ^}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendRight" )
+        #right
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "770", "390" )
         step "I wait for 0.5 seconds"
     }
 
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-                  step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-                  step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-                  step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendLeft" )
-                  step "I wait for 0.5 seconds"
-    frankly_map( "view:'ImageTestView'", "sendDown" )
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    step "I wait for 0.5 seconds"
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    step "I wait for 0.5 seconds"
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    step "I wait for 0.5 seconds"
+    #left
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
+    step "I wait for 0.5 seconds"
+    #down
+    frankly_map( "view:'ServiceScrollView'", "touchx:y:", "725", "390" )
                   
     %w{> < ~ |}.each{|char|
         step "I send the command \"#{char}\""
         step "I wait for 0.5 seconds"
-        frankly_map( "view:'ImageTestView'", "sendLeft" )
+        #left
+        frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
         step "I wait for 0.5 seconds"
     }
 
@@ -231,13 +255,15 @@ Then /^I type abcde$/ do
                   end tell
                   APPLESCRIPT}
                   step "I wait for 0.5 seconds"
-                  frankly_map( "view:'ImageTestView'", "sendLeft" )
+                  #left
+                  frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
                   step "I wait for 0.5 seconds"
 
                   %w{_ '= '+ *}.each{|char|
                   step "I send the command \"#{char}\""
                   step "I wait for 0.5 seconds"
-                  frankly_map( "view:'ImageTestView'", "sendLeft" )
+                  #left
+                  frankly_map( "view:'ServiceScrollView'", "touchx:y:", "630", "390" )
                   step "I wait for 0.5 seconds"
                   }
                   
