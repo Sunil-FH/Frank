@@ -19,7 +19,7 @@ Given /^I reset the application and profiles$/ do
   #steps "When I quit the simulator"
   SDK    = "6.0"
   APPLICATIONS_DIR = "/Users/#{ENV['USER']}/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
-  APPLICATIONS_DIR = "/Users/iilyin/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
+  #APPLICATIONS_DIR = "/Users/iilyin/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
   USERDEFAULTS_PLIST =
   "Library/Preferences/com.framehawk.ios.Framehawk.frankified.plist"
   Dir.foreach(APPLICATIONS_DIR) do |item|
