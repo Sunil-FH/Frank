@@ -291,7 +291,7 @@ end
 Then /^I check color of the cell$/ do
 
     `./simulatorExtractor`
-    File.open("/Users/Shared/report.html", "w") {|f|
+    File.open("report.html", "w") {|f|
         f.write("<html>")
         f.write("<head>\n")
         f.write("<script>\n")
