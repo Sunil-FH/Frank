@@ -1,8 +1,8 @@
 Given /^I set studio url to ([^\"]*)$/ do |studiourl|
     SDK    = "6.0"
     steps "When I quit the simulator"
-    #  APPLICATIONS_DIR = "/Users/#{ENV['USER']}/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
-    APPLICATIONS_DIR = "/Users/iilyin/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
+    APPLICATIONS_DIR = "/Users/#{ENV['USER']}/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
+    #APPLICATIONS_DIR = "/Users/iilyin/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
     ROOT_SETTINGS_PLIST = "Frankified.app/Settings.bundle/Root.plist"
     SETTINGS_PLIST = "Library/Preferences/com.framehawk.ios.Framehawk.frankified.plist"
     Dir.foreach(APPLICATIONS_DIR) do |item|
