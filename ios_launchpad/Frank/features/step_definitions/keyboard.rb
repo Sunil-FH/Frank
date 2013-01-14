@@ -10,6 +10,7 @@ Given /^I set studio url to ([^\"]*)$/ do |studiourl|
         if File::exists?("#{APPLICATIONS_DIR}/#{item}/#{ROOT_SETTINGS_PLIST}")
             puts "found the settings file"
             %x(/usr/libexec/PlistBuddy -c 'Set :PreferenceSpecifiers:1:DefaultValue #{studiourl}' '#{APPLICATIONS_DIR}/#{item}/#{ROOT_SETTINGS_PLIST}')
+            %x(/usr/libexec/PlistBuddy -c 'Add :StudioURL string #{studiourl}' '#{APPLICATIONS_DIR}/#{item}/#{SETTINGS_PLIST}')
             %x(/usr/libexec/PlistBuddy -c 'Set :StudioURL #{studiourl}' '#{APPLICATIONS_DIR}/#{item}/#{SETTINGS_PLIST}')
         end
     end
