@@ -8,6 +8,10 @@ Given /^I accept EULA and see welcome$/ do
     step "I should see \"login_dialog_bg\""
 end
 
+Given /^I cancel login$/ do
+    step "I touch the button marked \"Cancel\""
+end
+
 Given /^I launch using username "([^\"]*)", password "([^\"]*)"$/ do |username, password|
     step "I should see a \"I Accept\" button"
     step "I touch the button marked \"I Accept\""
@@ -29,3 +33,27 @@ Given /^I check login error visible$/ do
     step "I wait to see \"Incorrect User Id or Password\""
     step "I should see \"Incorrect User Id or Password\""
 end
+
+Given /^I enter PIN$/ do
+    step "I should see \"Setup PIN\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"2\""
+    step "I touch the button marked \"3\""
+    step "I touch the button marked \"4\""
+    step "I wait to see \"Re-enter PIN\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"2\""
+    step "I touch the button marked \"3\""
+    step "I touch the button marked \"4\""
+    step "I wait for 2 second"
+end
+
+Given /^I check Profile selector$/ do
+    step "I wait to see \"Choose a Profile\""
+end
+
+Given /^I relaunch the app$/ do
+    steps "When I quit the simulator"
+    steps "Given I launch the app"
+end
+
