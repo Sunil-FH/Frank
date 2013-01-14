@@ -57,3 +57,11 @@ Given /^I relaunch the app$/ do
     steps "Given I launch the app"
 end
 
+Given /^I check PIN help visible$/ do
+    step "I touch the button marked \"?\""
+    step "I wait to see \"Framehawk Canvas PIN\""
+    step "I should see \"Setup PIN\""
+    step "I should see \"Set up or enter a PIN to access Framehawk Canvas\""
+    step "I should see \"Close\""
+end
+
