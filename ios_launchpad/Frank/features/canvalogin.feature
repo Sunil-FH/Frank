@@ -1,19 +1,5 @@
 Feature: Session Stability Test Suite
-
-  Scenario: I setup Login and PIN
-    Given I set studio url to http://studio-qa.framehawk.com
-    Given I reset the application and profiles
-    Given I launch using username "iilyin@exadel.com", password "eklmn123"
-    Given I check PIN visible
-    Given I enter PIN
-  
-  Scenario: I check PIN
-    Given I relaunch the app
-    Given I check PIN visible
-    Given I enter PIN
-    Given I check Profile selector
    
-
   Scenario: Launching the resetted app
     Given I set studio url to http://studio-qa.framehawk.com
     Given I reset the application and profiles
@@ -34,3 +20,14 @@ Feature: Session Stability Test Suite
     Given I reset the application and profiles
     Given I launch using username "a", password "b"
     Given I check login error visible
+
+  Scenario: I check accound data saving
+    Given I set studio url to http://studio-qa.framehawk.com
+    Given I reset the application and profiles
+    Given I launch using username "iilyin@exadel.com", password "eklmn123"
+    Given I check PIN visible
+    Given I enter PIN
+    Given I relaunch the app
+    Given I check PIN visible
+    Given I enter PIN
+    Given I check Profile selector
