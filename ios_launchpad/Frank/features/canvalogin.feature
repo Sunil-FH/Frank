@@ -51,3 +51,16 @@ Feature: Session Stability Test Suite
     Given I reset the application and profiles
     Given I launch using username "iilyin@exadel.com", password "eklmn123", profile "Frank Automation"
     Given I check PIN reset cancel
+
+  Scenario: I check PIN reset cancel
+    Given I set studio url to http://studio-qa.framehawk.com
+    Given I reset the application and profiles
+    Given I launch using username "iilyin@exadel.com", password "eklmn123", profile "Frank Automation"
+    Given I check PIN reset cancel
+
+  Scenario: I check PIN incorect reset
+    Given I set studio url to http://studio-qa.framehawk.com
+    Given I reset the application and profiles
+    Given I launch using username "iilyin@exadel.com", password "eklmn123", profile "Frank Automation"
+    Given I check PIN reset with wrong PIN
+
