@@ -93,3 +93,30 @@ Given /^I check PIN reset with wrong PIN$/ do
     step "I wait to see \"Wrong Pin! Try again.\""
     step "I should see \"Wrong Pin! Try again.\""
 end
+
+Given /^I check PIN reset with mismatch$/ do
+    step "I touch the button marked \"menu drawer tab\""
+    step "I wait for the animation"
+    step "I touch the button marked \"menu settings icon\""
+    step "I wait for the animation"
+    step "I should see \"Reset PIN\""
+    step "I touch the button marked \"Reset PIN\""
+    step "I wait to see \"Enter Old PIN\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"2\""
+    step "I touch the button marked \"3\""
+    step "I touch the button marked \"4\""
+    step "I wait to see \"Setup PIN\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"2\""
+    step "I touch the button marked \"3\""
+    step "I touch the button marked \"4\""
+    step "I wait to see \"Re-enter PIN\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"1\""
+    step "I touch the button marked \"1\""
+    step "I wait to see \"PIN Mismatch. Try again!\""
+    step "I should see \"PIN Mismatch. Try again!\""
+end
+
