@@ -65,3 +65,15 @@ Given /^I check PIN help visible$/ do
     step "I should see \"Close\""
 end
 
+Given /^I check PIN reset cancel$/ do
+    step "I touch the button marked \"menu drawer tab\""
+    step "I wait for the animation"
+    step "I touch the button marked \"menu settings icon\""
+    step "I wait for the animation"
+    step "I should see \"Reset PIN\""
+    step "I touch the button marked \"Reset PIN\""
+    step "I wait to see \"Enter Old PIN\""
+    step "I touch the button marked \"Cancel\""
+    step "I wait to see \"menu drawer tab\""
+    step "I should see \"menu drawer tab\""
+end
